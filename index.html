@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Three JS</title>
+		<style>
+			body { margin: 0; }
+		</style>
+	</head>
+	<body>
+		<script src="script.js"></script>
+		<script>
+
+
+       var camara, escena, renderizado;
+       var geometria, material, mesh;
+       init();
+       animar();
+       function init() {
+         camara = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 0.02, 20 );
+       camara.position.z = 1;
+       escena = new THREE.Scene(); geometria = new THREE.BoxGeometry( 0.4, 0.4, 0.4 ); material = new THREE.MeshNormalMaterial();
+       mesh = new THREE.Mesh( geometria, material );
+       escena.add( mesh ); rendererizado = new THREE.WebGLRenderer( { antialias: true } );
+       rendererizado.setSize( window.innerWidth, window.innerHeight ); document.body.appendChild( rendererizado.domElement ); }
+
+       function animar() {
+         requestAnimationFrame( animar );
+         mesh.rotation.x += 0.01;
+         mesh.rotation.y += 0.02;
+         rendererizado.render( escena, camara );
+         }
+
+		</script>
+	</body>
+</html>
